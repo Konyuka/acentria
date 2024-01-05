@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
+import aspectRatio from '@tailwindcss/aspect-ratio';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -17,8 +18,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'primary': '#ed1c24',
+                'secondary': '#4d4f51',
+                // 'secondary': '#bbbbbb',
+            }
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [forms, typography, aspectRatio],
 };
