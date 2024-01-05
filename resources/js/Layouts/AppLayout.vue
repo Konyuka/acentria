@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import Navigation from '@/Components/App/Navigation.vue'
+import Footer from '@/Components/App/Footer.vue'
 
 const props = defineProps({
 
@@ -12,6 +13,9 @@ const props = defineProps({
     <div>
         <div>
             <Navigation />
+            <slot  />
+            
+            <Footer />
         </div>
     </div>
 </template>
