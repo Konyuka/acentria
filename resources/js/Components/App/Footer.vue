@@ -93,6 +93,8 @@ const currentYear = computed(()=>{
     const currentDate = new Date();
     return currentDate.getFullYear();
 })
+
+const email = ref(null)
 </script>
 
 <template>
@@ -115,6 +117,7 @@ const currentYear = computed(()=>{
                             >Email address</label
                         >
                         <input
+                            v-model="email"
                             type="email"
                             name="email-address"
                             id="email-address"

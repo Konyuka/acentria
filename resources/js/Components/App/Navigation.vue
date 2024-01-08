@@ -28,7 +28,7 @@ const menuItems = ref([
     },
     {
         name: "about us",
-        link: "home",
+        link: "about",
     },
     {
         name: "news & updates",
@@ -36,22 +36,28 @@ const menuItems = ref([
     },
     {
         name: "contact us",
-        link: "home",
+        link: "contacts",
     },
 ]);
+
+const getRouteName = (routeName) => {
+    return route(routeName)
+}
+
 </script>
 
 <template>
     <header class="bg-white shadow">
+
         <div
-            class="mx-auto max-w-7xl px-1 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-1"
+            class="mx-auto max-w-8xl px-1 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-20"
         >
-            <div class="relative flex h-28 justify-between">
+            <div class="relative flex h-32 justify-between gap-10">
                 <div class="relative z-10 flex px-2 lg:px-0">
                     <div class="flex flex-shrink-0 items-center">
                         <img
-                            class="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                            class="h-28 w-auto"
+                            src="img/logo.png"
                             alt="Your Company"
                         />
                     </div>
@@ -66,8 +72,8 @@ const menuItems = ref([
                     >
                         <Link
                             v-for="menuItem in menuItems"
-                            :href="route('home')"
-                            class="text-black inline-flex items-center rounded-md py-2 px-3 text-xl font-medium tracking-widest hover:text-primary duration-500 ease-in-out capitalize hover:scale-90"
+                            :href="getRouteName(menuItem.link)"
+                            class="hover:shadow-md text-black inline-flex items-center rounded-md py-2 px-5 text-xl font-medium tracking-widest hover:text-primary duration-500 ease-in-out capitalize hover:scale-90"
                             aria-current="page"
                         >
                             {{ menuItem.name }}
@@ -128,7 +134,7 @@ const menuItems = ref([
 
                 <!-- social brands -->
                 <div
-                    class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center gap-2"
+                    class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center gap-5"
                 >
                     <a
                         v-for="socialIcon in socialIcons"
@@ -140,7 +146,7 @@ const menuItems = ref([
                         <span class="absolute -inset-1.5"></span>
                         <span class="sr-only">View Facebook</span>
                         <div
-                            class="bg-black h-10 w-10 rounded-full flex items-center justify-center group-hover:bg-white"
+                            class="bg-black h-8 w-8 rounded-full flex items-center justify-center group-hover:bg-white"
                         >
                             <i
                                 :class="socialIcon.icon"
@@ -152,12 +158,12 @@ const menuItems = ref([
             </div>
         </div>
 
-        <div class="mx-4 mb-4">
+        <div class="mx-2 mb-2">
             <nav
-                class="hidden lg:flex lg:space-x-8 lg:py-2 bg-secondary"
+                class="hidden lg:flex lg:space-x-8 lg:py-2 bg-secondary rounded-md"
                 aria-label="Global"
             >
-                <div class="grid grid-cols-5 gap-2 w-full">
+                <div class="grid grid-cols-5 gap-2 w-full px-6">
                     <div class="flex items-center">
                         <button
                             class="hover:scale-150 duration-500 ease-in-out ml-16 fa-xl font-bold text-white hover:text-primary"
@@ -204,10 +210,10 @@ const menuItems = ref([
                         </button>
                     </div>
 
-                    <div class="flex items-center ml-10">
+                    <div class="flex items-center ml-24">
                         <button
                             type="button"
-                            class="rounded-md bg-primary px-8 py-3 text-md font-semibold text-white hover:scale-125 shadow-sm hover:bg-secondary duration-500 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            class="rounded-md bg-primary px-8 py-2 text-md font-semibold text-white hover:scale-125 shadow-sm hover:bg-secondary duration-500 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
                             Get a quote
                         </button>
@@ -300,5 +306,6 @@ const menuItems = ref([
                 </div>
             </div>
         </nav>
+
     </header>
 </template>

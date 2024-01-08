@@ -11,6 +11,9 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/about-us', function () { return Inertia::render('About');})->name('about');
+Route::get('/contact-us', function () { return Inertia::render('Contacts');})->name('contacts');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
