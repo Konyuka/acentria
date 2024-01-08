@@ -13,6 +13,7 @@ Route::get('/', function () {
 
 Route::get('/about-us', function () { return Inertia::render('About');})->name('about');
 Route::get('/contact-us', function () { return Inertia::render('Contacts');})->name('contacts');
+Route::get('/news-and-blogs', function () { return Inertia::render('Blogs');})->name('blogs');
 
 Route::middleware([
     'auth:sanctum',

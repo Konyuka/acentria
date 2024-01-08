@@ -32,7 +32,7 @@ const menuItems = ref([
     },
     {
         name: "news & updates",
-        link: "home",
+        link: "blogs",
     },
     {
         name: "contact us",
@@ -73,7 +73,7 @@ const getRouteName = (routeName) => {
                         <Link
                             v-for="menuItem in menuItems"
                             :href="getRouteName(menuItem.link)"
-                            class="hover:shadow-md text-black inline-flex items-center rounded-md py-2 px-5 text-xl font-medium tracking-widest hover:text-primary duration-500 ease-in-out capitalize hover:scale-90"
+                            class="hover:shadow-md text-black inline-flex items-center rounded-md py-2 px-10 text-xl font-medium tracking-widest hover:text-primary duration-500 ease-in-out capitalize hover:scale-90"
                             aria-current="page"
                         >
                             {{ menuItem.name }}
