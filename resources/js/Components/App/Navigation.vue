@@ -40,15 +40,15 @@ const menuItems = ref([
     },
 ]);
 
-const getRouteName = (routeName) => {
-    return route(routeName)
-}
+const itDropDown = ref(false);
 
+const getRouteName = (routeName) => {
+    return route(routeName);
+};
 </script>
 
 <template>
     <header class="bg-white shadow">
-
         <div
             class="mx-auto max-w-8xl px-1 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-20"
         >
@@ -158,7 +158,7 @@ const getRouteName = (routeName) => {
             </div>
         </div>
 
-        <div class="mx-2 mb-2">
+        <div class="mx-2 mb-1">
             <nav
                 class="hidden lg:flex lg:space-x-8 lg:py-2 bg-secondary rounded-md"
                 aria-label="Global"
@@ -173,13 +173,41 @@ const getRouteName = (routeName) => {
                     </div>
 
                     <div class="ml-36 flex items-center col-span-3 gap-10">
-                        <button
-                            href="#"
-                            class="text-white inline-flex items-center rounded-md py-2 px-3 text-lg font-bold tracking-wide hover:text-primary hover:scale-90 duration-500 ease-in-out"
-                            aria-current="page"
+                        <div
+                            class="relative"
+                            @mouseleave="insuranceDropDown = false"
                         >
-                            Insurance <i class="fas fa-caret-down ml-2"></i>
-                        </button>
+                            <button
+                                @mouseover="insuranceDropDown = true"
+                                class="text-white inline-flex items-center rounded-md py-2 px-3 text-lg font-bold tracking-wide hover:text-primary hover:scale-90 duration-500 ease-in-out"
+                                aria-current="page"
+                            >
+                                Insurance <i class="fas fa-caret-down ml-2"></i>
+                            </button>
+
+                            <div
+                                @mouseleave="insuranceDropDown = false"
+                                v-if="insuranceDropDown"
+                                class="absolute left-0 z-20 mt-0 w-auto origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                role="menu"
+                                aria-orientation="vertical"
+                                aria-labelledby="menu-button"
+                                tabindex="-1"
+                            >
+                                <div class="py-1" role="none">
+                                    <Link
+                                        :href="route('home')"
+                                        class="text-black font-semibold tracking-widest hover:font-bold hover:text-seco hover:scale-95 duration-500 ease-in-out block px-4 py-5 hover:py-8 hover:text-md text-sm border-b-2"
+                                        role="menuitem"
+                                        tabindex="-1"
+                                        id="menu-item-0"
+                                        ><i class="fas fa-caret-right"></i>
+                                        Tender Analysis
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
                         <button
                             href="#"
                             class="text-white inline-flex items-center rounded-md py-2 px-3 text-lg font-bold tracking-wide hover:text-primary hover:scale-90 duration-500 ease-in-out"
@@ -201,13 +229,52 @@ const getRouteName = (routeName) => {
                         >
                             Investment
                         </button>
-                        <button
-                            href="#"
-                            class="text-white inline-flex items-center rounded-md py-2 px-3 text-lg font-bold tracking-wide hover:text-primary hover:scale-90 duration-500 ease-in-out"
-                            aria-current="page"
+
+                        <div
+                            class="relative inline-block"
+                            @mouseleave="itDropDown = false"
                         >
-                            IT & Products <i class="fas fa-caret-down ml-2"></i>
-                        </button>
+                            <button
+                                @mouseover="itDropDown = true"
+                                class="text-white inline-flex items-center rounded-md py-2 px-3 text-lg font-bold tracking-wide hover:text-primary hover:scale-90 duration-500 ease-in-out"
+                                aria-current="page"
+                            >
+                                IT & Products
+                                <i class="fas fa-caret-down ml-2"></i>
+                            </button>
+
+                            <div
+                                @mouseleave="itDropDown = false"
+                                v-if="itDropDown"
+                                class="absolute left-0 z-20 mt-0 w-72 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                role="menu"
+                                aria-orientation="vertical"
+                                aria-labelledby="menu-button"
+                                tabindex="-1"
+                            >
+                                <div class="py-1" role="none">
+                                    <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                                    <Link
+                                        :href="route('home')"
+                                        class="text-black font-semibold tracking-widest hover:font-bold hover:text-seco hover:scale-95 duration-500 ease-in-out block px-4 py-5 hover:py-8 hover:text-md text-sm border-b-2"
+                                        role="menuitem"
+                                        tabindex="-1"
+                                        id="menu-item-0"
+                                        ><i class="fas fa-caret-right"></i>
+                                        Tender Analysis
+                                    </Link>
+                                    <Link
+                                        :href="route('home')"
+                                        class="text-black font-semibold tracking-widest hover:font-bold hover:text-seco hover:scale-95 duration-500 ease-in-out block px-4 py-5 hover:py-8 hover:text-md text-sm border-b-2"
+                                        role="menuitem"
+                                        tabindex="-1"
+                                        id="menu-item-1"
+                                        ><i class="fas fa-caret-right"></i>
+                                        Tender Information
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex items-center ml-24">
@@ -306,6 +373,5 @@ const getRouteName = (routeName) => {
                 </div>
             </div>
         </nav>
-
     </header>
 </template>
